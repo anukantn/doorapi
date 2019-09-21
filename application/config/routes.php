@@ -59,6 +59,16 @@ $route['book/create']['post']   	   = 'book/create';
 $route['book/update/(:num)']['put']    = 'book/update/$1';
 $route['book/delete/(:num)']['delete'] = 'book/delete/$1';
 
+
+
+
+$route['key']['get']                     = 'key';
+$route['key/detail/(:num)']['get']    = 'key/detail/$1';
+$route['key/create']['post']          = 'key/create';
+$route['key/update/(:num)']['put']    = 'key/update/$1';
+$route['key/delete/(:num)']['delete'] = 'key/delete/$1';
+
+
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -105,4 +105,32 @@ class MyModel extends CI_Model {
         return array('status' => 200,'message' => 'Data has been deleted.');
     }
 
+
+    public function key_all_data()
+    {
+        return $this->db->select('room_number,access_key,startdate,enddate')->from('roomkeys')->order_by('room_number','asc')->get()->result();
+    }
+    public function key_detail_data($roomnumber)
+    {
+        return $this->db->select('room_number,access_key,startdate,enddate')->from('roomkeys')->where('room_number',$roomnumber)->order_by('room_number','asc')->get()->row();
+    }
+
+    public function key_create_data($data)
+    {
+        $this->db->insert('roomkeys     ',$data);
+        return array('status' => 201,'message' => 'Data has been created.');
+    }
+
+    public function key_update_data($id,$data)
+    {
+        $this->db->where('room_number',$id)->update('roomkeys',$data);
+        return array('status' => 200,'message' => 'Data has been updated.');
+    }
+
+    public function key_delete_data($id)
+    {
+        $this->db->where('id',$id)->delete('roomkeys');
+        return array('status' => 200,'message' => 'Data has been deleted.');
+    }
+
 }
