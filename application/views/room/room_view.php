@@ -10,10 +10,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
     }
 </style>
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="<?= base_url() ?>">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="<?= base_url() ?>index.php/room/roomAssign">Dashboard</a></li>
     <li class="breadcrumb-item">Accounts</li>
-    <li class="breadcrumb-item"><a href="<?= base_url() ?>account/cusAccount">Account</a></li>
-    <li class="breadcrumb-item active">View Account</li>
+    <li class="breadcrumb-item">Account</li>
+    <li class="breadcrumb-item active">View Room</li>
 </ol>
 
 

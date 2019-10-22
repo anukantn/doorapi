@@ -112,9 +112,12 @@ class MyModel extends CI_Model {
     }
     public function key_detail_data($roomnumber)
     {
-        return $this->db->select('room_number,access_key,startdate,enddate')->from('roomkeys')->where('room_number',$roomnumber)->order_by('room_number','asc')->get()->row();
+        return $this->db->select('room_number,access_key,startdate,enddate')->from('roomkeys')->where('access_key',$roomnumber)->order_by('room_number','asc')->get()->row();
     }
-
+ public function key_detail_data2($roomnumber)
+    {
+        return $this->db->select('room_number,access_key,startdate,enddate')->from('roomkeys')->where('access_key',$roomnumber)->order_by('room_number','asc')->get()->row_array();
+    }
     public function key_create_data($data)
     {
         $this->db->insert('roomkeys     ',$data);
@@ -131,6 +134,23 @@ class MyModel extends CI_Model {
     {
         $this->db->where('id',$id)->delete('roomkeys');
         return array('status' => 200,'message' => 'Data has been deleted.');
+    }
+    
+    public function verifyKey($data)
+    {
+
+        $roomnum = $data['room_number'];
+        $key =     $data['access_key'];
+        $date = date('Y-m-d');
+        $sql = "SELECT * FROM roomkeys  WHERE room_number =  $roomnum AND access_key  = '$key' AND enddate >= '$date' AND status = 0 ";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            // return true;
+            return array('status' => 200,'message' => 'Key Verified.');
+        } else {
+            // return false;
+            return array('status' => 200,'message' => 'Key is invalid.');
+        }
     }
 
 }

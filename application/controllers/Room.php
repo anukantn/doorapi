@@ -27,6 +27,7 @@ class Room extends CI_Controller {
 				
                 $params = array(
                     'room_number' => $this->input->post('room_number'),
+                    'status' => $this->input->post('status'),
                     'access_key' => $this->input->post('access_key'),
                     'startdate' => $this->input->post('startdate'),
                     'enddate' => $this->input->post('enddate'),

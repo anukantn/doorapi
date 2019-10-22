@@ -22,5 +22,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?=base_url()?>resources/vendor/datatables/jquery.dataTables.js"></script>
     <script src="<?=base_url()?>resources/vendor/datatables/dataTables.bootstrap4.js"></script>
    
-    <script src="<?=base_url()?>resources/js/sb-admin.min.js"></script>
+    <!--<script src="<?=base_url()?>resources/js/sb-admin.min.js"></script>-->
     <script src="https://kit.fontawesome.com/cbc2f2b406.js" crossorigin="anonymous"></script>

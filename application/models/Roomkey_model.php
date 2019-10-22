@@ -25,6 +25,7 @@ class Roomkey_model extends CI_Model
     function get_all_roomkeys()
     {
         $this->db->order_by('room_number', 'desc');
+        $this->db->where('enddate >', date('Y-m-d'));
         return $this->db->get('roomkeys')->result_array();
     }
         

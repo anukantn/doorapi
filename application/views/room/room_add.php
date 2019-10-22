@@ -10,15 +10,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </style>
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="<?= base_url() ?>">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="<?= base_url() ?>index.php/room/roomAssign">Dashboard</a></li>
     <li class="breadcrumb-item">Settings</li>
-    <li class="breadcrumb-item"><a href="<?= base_url() ?>room/admins">Account</a></li>
+    <li class="breadcrumb-item">Room</li>
     <li class="breadcrumb-item active">Add Room Assignment</li>
 </ol>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         $('.date').datepicker({
-            format: 'yyyy-mm-dd'
+            format: 'yyyy-mm-dd',
+            todayHighlight: true,
+            autoclose: true,
+            todayBtn: "linked"
         })
     });
 </script>
@@ -30,28 +33,83 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <input class="form-control" type="text" value="" placeholder="" name="room_number">
         </div>
     </div>
-
+ <input class="form-control" hidden type="text" value="0" placeholder="" name="status">
     <div class="form-group row" data-capture=".input-group, .datepicker">
-        <label for="example-text-input" class="col-2 col-form-label">Contract Start Date:</label>
+        <label for="example-text-input" class="col-2 col-form-label">Start Date:</label>
         <div class="input-group date col-10">
 
-            <input type="text" class="form-control" placeholder="Select start date" name="startdate" id="startdate" required>
+            <input type="text" class="form-control" placeholder="Select start date" name="startdate" onchange="checkstartdate()" id="startdate" required>
             <div class="input-group-append">
                 <i class="fas fa-calendar-week"></i>
             </div>
         </div>
     </div>
     <div class="form-group row" data-capture=".input-group, .datepicker">
-        <label for="example-text-input" class="col-2 col-form-label">Contract End date:</label>
+        <label for="example-text-input" class="col-2 col-form-label">End date:</label>
         <div class="input-group date col-10">
 
-            <input type="text" class="form-control" placeholder="Select end date" name="enddate" id="enddate" required>
+            <input type="text" class="form-control" placeholder="Select end date" name="enddate" id="enddate" onchange="checkdate()" required>
             <div class="input-group-append">
                 <i class="fas fa-calendar-week"></i>
             </div>
         </div>
     </div>
+ <script>
+        function checkdate() {
+            var start = document.getElementById("startdate").value;
+            var end = document.getElementById("enddate").value;
 
+            var startdate = Date.parse(start);
+            var enddate = Date.parse(end);
+            var today = new Date();
+            console.log(startdate);
+            //var daysBetween = (new Date(enddate).getTime() - new Date(startdate).getTime()) / 86400000
+            if (startdate < today) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Check Date range!',
+                    text: 'Date range selected is invalid!',
+
+                })
+            }
+            if (startdate > enddate) {
+
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Check Date range!',
+                    text: 'Date range selected is invalid!',
+
+                })
+                // alert('test');
+                document.getElementById("enddate").value = '';
+            }
+
+
+
+
+        }
+
+        function checkstartdate() {
+            var start = document.getElementById("startdate").value;
+            //var end = document.getElementById("enddate").value;
+
+            var startdate = Date.parse(start);
+            //var enddate = Date.parse(end);
+            var today = new Date();
+            console.log(startdate);
+            //var daysBetween = (new Date(enddate).getTime() - new Date(startdate).getTime()) / 86400000
+            if (startdate < today) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Check Date range!',
+                    text: 'Start date selected is invalid!',
+
+                })
+                document.getElementById("startdate").value = '';
+            }
+           
+        }
+    </script>
     <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Access:</label>
         <div class="input-group mb-3 col-10">

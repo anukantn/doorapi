@@ -8,9 +8,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="<?= base_url() ?>resources/vendor/qrcode/qrcode.min.js"></script>
 <link href="<?=base_url()?>resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+<link href="<?=base_url()?>resources/css/the-big-picture.css" rel="stylesheet">
+<link href="<?=base_url()?>resources/vendor/bootstrapdatepicker/bootstrap-datepicker.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">NFC Smart Lock</a>
+  <a class="navbar-brand" href="<?= base_url() ?>">NFC Smart Lock</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,10 +26,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </li>
       
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>
 

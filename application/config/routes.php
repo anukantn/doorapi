@@ -63,12 +63,14 @@ $route['book/delete/(:num)']['delete'] = 'book/delete/$1';
 
 
 $route['key']['get']                     = 'key';
-$route['key/detail/(:num)']['get']    = 'key/detail/$1';
+$route['key/detail/(:any)']['get']    = 'key/detail/$1';
+$route['key/detail2/(:any)']['get']    = 'key/detail2/$1';
 $route['key/create']['post']          = 'key/create';
 $route['key/update/(:num)']['put']    = 'key/update/$1';
 $route['key/delete/(:num)']['delete'] = 'key/delete/$1';
+$route['key/verify']['post']          = 'key/verify';
 
-
+$route['JwtToken/LoginToken']['get']           = 'JwtToken/LoginToken';
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
